@@ -1,31 +1,19 @@
 require 'pry'
 
 def nyc_pigeon_organizer(data)
-
- males = data[:gender][:male]
- females = data[:gender][:female]
- pigeons = []
- pigeons << males
- pigeons << females
-
-pigeon_names = [] 
-
-first_index = 0 
-
-  while first_index < pigeons.count do 
-  second_index = 0 
-    while second_index < pigeons[first_index].count do
-    pigeon_names << pigeons[first_index][second_index]
-    second_index += 1 
+  pigeon_list = {}
+  data.each do |color_gender_lives, value|
+    value.each do |stats, all_names|
+      all_names.each do |name|
+        if pigeon_list[name] == nil
+          pigeon_list[name] = {}
+        end
+        if pigeon_list[name][color_gender_lives] == nil
+          pigeon_list[name][color_gender_lives] = []
+        end
+        pigeon_list[name][color_gender_lives].push(stats.to_s)
+      end
     end 
-  first_index += 1 
-  end 
-
-result = {}
-
-pigeon_names.each do 
-  if data[:color].include? 
-    result[pigeon_names{index) += data[:color]
-
-result
+  end
+  pigeon_list
 end
